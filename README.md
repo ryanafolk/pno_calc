@@ -4,7 +4,7 @@ This is a simple Predicted Niche Occupancy (PNO) calculator that is intended to 
 This script is improved over previous implementations by:
 1. Improved spatial statistic efficiency.
 2. Using .tif rather than .asc for initial processing steps.
-3. Not depending on matching extent between the model and the  -- especially useful where common bins are needed for global extents.
+3. Not depending on matching extent between the model and the environmental data -- especially useful where common bins are needed for global extents.
 
 
 Run like so, after checking that paths are appropriate:
