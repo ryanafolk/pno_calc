@@ -7,12 +7,12 @@ This script is improved over previous implementations by:
 3. Not depending on matching extent between the model and the environmental data -- especially useful where common bins are needed for global extents.
 
 
-Run like so, after checking that paths are appropriate:
+Run like so:
 ```
 ./extract_and_join_climatesuitability.sh path_to_model_folder path_to_environmental_data_folder
 ```
 
-Common projections among models and environmental data are assumed. PNO results are encoded as a csv matrix with rows as species and columns as left-hand histogram bin boundaries; cells are bin probabilities. A set of `sed` commands at the end are intended to remove non-species designations in species names (variable names, etc.); edit as needed.
+Common projections among models and environmental data are assumed. Missing data is assumed to be -9999. PNO results are encoded as a csv matrix with rows as species and columns as left-hand histogram bin boundaries; cells are bin probabilities. A set of `sed` commands at the end are intended to remove non-species designations in species names (variable names, etc.); edit as needed.
 
 Note that histograms are normalized but can sum to a number slightly different from one at ~15 decimal places due to float precision limitations. A correction step may be needed for applications that require summing to one (e.g,. the numpy histogram implementation).
 
