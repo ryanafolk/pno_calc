@@ -17,3 +17,7 @@ Common projections among models and environmental data are assumed. PNO results 
 Note that histograms are normalized but can sum to a number slightly different from one at ~15 decimal places due to float precision limitations. A correction step may be needed for applications that require summing to one (e.g,. the numpy histogram implementation).
 
 Future speed improvements could include skipping the environmental extent-cropping step and only loading environmental data a single time for the spatial join operation across species.
+
+# Dependencies
+1. GDAL library executables in path: `gdal_translate`, `gdalwarp`, `gdaltindex`.
+2. Python libraries `numpy`, `pandas`.
