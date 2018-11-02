@@ -9,7 +9,7 @@ This script is improved over previous implementations by:
 
 Run like so, after checking that paths are appropriate:
 ```
-./extract_and_join_climatesuitability.sh path_to_models path_to_environmental_data
+./extract_and_join_climatesuitability.sh path_to_model_folder path_to_environmental_data_folder
 ```
 
 Common projections among models and environmental data are assumed. PNO results are encoded as a csv matrix with rows as species and columns as left-hand histogram bin boundaries; cells are bin probabilities. A set of `sed` commands at the end are intended to remove non-species designations in species names (variable names, etc.); edit as needed.
