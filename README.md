@@ -1,5 +1,5 @@
 # pno_calc
-This is a simple Predicted Niche Occupancy (PNO) calculator that is intended to be comparable to but faster and more flexible than the implementation in R package `phyloclim`, function `pno`. A PNO is a method of extracting climatic tolerances directly from niche models, expressed in terms of probability of suitability over a series of environmental bins, and is commonly used in ancestral niche reconstruction and other applications.
+This is a simple Predicted Niche Occupancy (PNO) calculator that is intended to be comparable to but faster and more flexible than the implementation in R package `phyloclim`, function `pno`, for global-scale datasets at high resolution. A PNO is a method of extracting climatic tolerances directly from niche models, expressed in terms of probability of suitability over a series of environmental bins, and is commonly used in ancestral niche reconstruction and other applications.
 
 This script is improved over previous implementations by:
 1. Improved spatial statistic efficiency.
