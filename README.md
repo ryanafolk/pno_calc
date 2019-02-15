@@ -12,9 +12,11 @@ Run like so:
 ./extract_and_join_climatesuitability.sh path_to_model_folder path_to_environmental_data_folder
 ```
 
-Common projections among models and environmental data are assumed. Missing data is assumed to be -9999. PNO results are encoded as a csv matrix with rows as species and columns as left-hand histogram bin boundaries; cells are bin probabilities. A set of `sed` commands at the end are intended to remove non-species designations in species names (variable names, etc.); edit as needed.
+Common projections among models and environmental data (but NOT necessarily extents) are assumed. Missing data is assumed to be -9999. PNO results are encoded as a csv matrix with rows as species and columns as left-hand histogram bin boundaries; cells are bin probabilities. A set of `sed` commands at the end are intended to remove non-species designations in species names (variable names, etc.); edit as needed.
 
-Note that histograms are normalized but can sum to a number slightly different from one at ~15 decimal places due to float precision limitations. A correction step may be needed for applications that require summing to one (e.g,. the numpy histogram implementation).
+Two modules at the end, `binner_climateextraction.py` and `bin_trimmer.py` are optional. The former adds point extraction data to an existing PNO file (e.g., for species with too few occurrences to model directly) and the latter drops columns with low probability for all species (hard coded as <1e-4).
+
+Note that histograms are normalized but can sum to a number slightly different from one at ~15 decimal places due to float precision limitations. A correction step may be needed for applications that require summing to one.
 
 Future speed improvements could include skipping the environmental extent-cropping step and only loading environmental data a single time for the spatial join operation across species.
 
