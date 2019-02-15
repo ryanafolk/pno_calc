@@ -1,6 +1,6 @@
-# PNO calculator script
-# Must have gdal tools in path
-
+## PNO calculator script
+## Must have gdal tools in path
+#
 modelpath=$1
 layerpath=$2
 
@@ -37,7 +37,7 @@ done
 
 rm *.shp *.shx *.dbf
 
-########
+#########
 # Now per variable we do the PNO calculation
 
 # Find global occupied minima and maxima for variable
@@ -84,4 +84,20 @@ sed -i 's/LandCover_6_Herbaceous//g' ./results/*
 sed -i 's/^_*//g' ./results/*
 sed -i 's/_avg//g' ./results/*
 
+# Add histograms for any species for which point extraction was done instead of modeling
+# These MUST be of the format: 
+#	VARIABLE_pno_SPECIES.csv
+#	and a csv with the climate values in a column called "variable"
+#	The Saxifragales point extraction script will create the right format
 
+for f in ./results/*.out; do
+g=$( echo ${f} | sed 's/.*\///g' | sed 's/\..*//g' )
+echo ${g}
+./binner_climateextraction.py ${f} ${f}.updated -x ./../new_point_extraction/pnos_directsampling_no_missing_data_no_point_associations/${g}_pno_*.csv
+sed -i 's/Unnamed: 0,/,/g' ${f}.updated
+done
+
+for f in ./results/*.out.updated; do
+./bin_trimmer.py ${f} ${f}.dropped
+sed -i 's/Unnamed: 0,/,/g' ${f}.dropped
+done
