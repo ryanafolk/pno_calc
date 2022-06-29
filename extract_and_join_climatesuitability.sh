@@ -3,6 +3,7 @@
 #
 modelpath=$1
 layerpath=$2
+extractionpath=$3
 
 mkdir cropped_environment
 mkdir model_dataframe
@@ -93,7 +94,7 @@ sed -i 's/_avg//g' ./results/*
 for f in ./results/*.out; do
 g=$( echo ${f} | sed 's/.*\///g' | sed 's/\..*//g' )
 echo ${g}
-./binner_climateextraction.py ${f} ${f}.updated -x ./../new_point_extraction/pnos_directsampling_no_missing_data_no_point_associations/${g}_pno_*.csv
+./binner_climateextraction.py ${f} ${f}.updated -x ${extractionpath}/${g}_pno_*.csv
 sed -i 's/Unnamed: 0,/,/g' ${f}.updated
 done
 
