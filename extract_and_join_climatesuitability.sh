@@ -11,13 +11,13 @@ mkdir results
 
 #######
 # We start by generating joined dataframes of suitability and climate attributes
-for h in ./${modelpath}/*; do
+for h in ${modelpath}/*; do
 i=$(echo ${h} | sed 's/.*\///g') # Model file name
 i=$(echo ${i} | sed 's/\..*//g') # Species name
 gdaltindex ${i}.shp ${h} # Shape file from model extent
 gdal_translate -of XYZ ${h} ./model_dataframe/${i}.xyz # Output in dataframe-like format
 
-for f in ./${layerpath}/*.tif; do
+for f in ${layerpath}/*.tif; do
 g=$(echo ${f} | sed 's/.*\///g') # Environmental data file name
 g=$(echo ${g} | sed 's/\..*//g') # Variable name
 echo ${f}
