@@ -64,7 +64,7 @@ let "j++" # Iterate progress counter
 done
 
 echo "Starting binning calculation"
-./binner.py minima.tmp maxima.tmp 50 ./results/${z}.out -x ./joined_data/${z}_*.xyz
+python3 binner.py minima.tmp maxima.tmp 50 ./results/${z}.out -x ./joined_data/${z}_*.xyz
 
 rm minima.tmp maxima.tmp
 done
@@ -94,11 +94,11 @@ sed -i 's/_avg//g' ./results/*
 for f in ./results/*.out; do
 g=$( echo ${f} | sed 's/.*\///g' | sed 's/\..*//g' )
 echo ${g}
-./binner_climateextraction.py ${f} ${f}.updated -x ${extractionpath}/${g}_pno_*.csv
+python3 binner_climateextraction.py ${f} ${f}.updated -x ${extractionpath}/${g}_pno_*.csv
 sed -i 's/Unnamed: 0,/,/g' ${f}.updated
 done
 
 for f in ./results/*.out.updated; do
-./bin_trimmer.py ${f} ${f}.dropped
+python3 bin_trimmer.py ${f} ${f}.dropped
 sed -i 's/Unnamed: 0,/,/g' ${f}.dropped
 done
