@@ -48,7 +48,7 @@ rm maxima.tmp
 
 i=$(ls ./joined_data/*.xyz | wc -l) # Number of relevant files in directory
 j=1 # Progress counter
-for y in ./${layerpath}/*.tif; do
+for y in ${layerpath}/*.tif; do
 z=$(echo ${y} | sed 's/.*\///g') # Environmental data file name
 z=$(echo ${z} | sed 's/\..*//g') # Variable name
 echo ${z}
