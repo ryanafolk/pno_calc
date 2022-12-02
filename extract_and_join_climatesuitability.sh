@@ -4,6 +4,7 @@
 modelpath=$1
 layerpath=$2
 extractionpath=$3
+numberbins=$4
 
 mkdir cropped_environment
 mkdir model_dataframe
@@ -64,7 +65,7 @@ let "j++" # Iterate progress counter
 done
 
 echo "Starting binning calculation"
-python3 binner.py minima.tmp maxima.tmp 50 ./results/${z}.out -x ./joined_data/${z}_*.xyz
+python3 binner.py minima.tmp maxima.tmp $numberbins ./results/${z}.out -x ./joined_data/${z}_*.xyz
 
 rm minima.tmp maxima.tmp
 done
