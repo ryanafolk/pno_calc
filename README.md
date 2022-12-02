@@ -9,7 +9,7 @@ This script is improved over previous implementations by:
 
 Run like so:
 ```
-bash extract_and_join_climatesuitability.sh path_to_model_folder path_to_environmental_data_folder path_to_extraction_data
+bash extract_and_join_climatesuitability.sh path_to_model_folder path_to_environmental_data_folder path_to_extraction_data number_of_bins
 ```
 
 Common projections among models and environmental data (but NOT necessarily extents) are assumed. Missing data is assumed to be -9999. PNO results are encoded as a csv matrix with rows as species and columns as left-hand histogram bin boundaries; cells are bin probabilities. A set of `sed` commands at the end are intended to remove non-species designations in species names (variable names, etc.); edit as needed.
